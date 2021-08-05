@@ -34,4 +34,25 @@ class UserAddressesController extends Controller
 
         return redirect()->route('user_addresses.index');
     }
+
+    public function edit(UserAddress $userAddress)
+    {
+        $address = $userAddress;
+        return view('user_addresses.create_and_edit', compact('address'));
+    }
+
+    public function update(UserAddressRequest $request, UserAddress $userAddress)
+    {
+        $userAddress->update($request->only([
+            'province',
+            'city',
+            'district',
+            'address',
+            'zip',
+            'contact_name',
+            'contact_phone',
+        ]));
+
+        return redirect()->route('user_addresses.index');
+    }
 }
