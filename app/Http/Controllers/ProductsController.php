@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use Carbon\Exceptions\ParseErrorException;
 use Illuminate\Http\Request;
 
 class ProductsController extends Controller
@@ -29,5 +30,14 @@ class ProductsController extends Controller
                 'order'  => $order,
             ],
         ]);
+    }
+
+    public function show(Product $product)
+    {
+        if (!$product->on_sale) {
+            throw new \Exception('商品未上架');
+        }
+
+        return view('products.show', compact('product'));
     }
 }
