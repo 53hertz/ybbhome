@@ -37,7 +37,7 @@
               <div class="cart_amount"><label>数量</label><input type="text" class="form-control form-control-sm" value="1"><span>件</span><span class="stock"></span></div>
               <div class="buttons">
                 <button class="btn btn-success btn-favor">❤ 收藏</button>
-                <button class="btn btn-primary btn-add-to-cart">加入购物车</button>
+                <button class="btn btn-danger btn-add-to-cart">加入购物车</button>
               </div>
             </div>
           </div>

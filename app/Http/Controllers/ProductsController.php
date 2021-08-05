@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\InvalidRequestException;
 use App\Models\Product;
 use Carbon\Exceptions\ParseErrorException;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class ProductsController extends Controller
     public function show(Product $product)
     {
         if (!$product->on_sale) {
-            throw new \Exception('商品未上架');
+            throw new InvalidRequestException('该商品还未上架哦~');
         }
 
         return view('products.show', compact('product'));
