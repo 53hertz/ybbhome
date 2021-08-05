@@ -58,7 +58,7 @@ return [
 
         'guards' => [
             'admin' => [
-                'driver'   => 'session',
+                'driver' => 'session',
                 'provider' => 'admin',
             ],
         ],
@@ -66,7 +66,7 @@ return [
         'providers' => [
             'admin' => [
                 'driver' => 'eloquent',
-                'model'  => Encore\Admin\Auth\Database\Administrator::class,
+                'model' => Encore\Admin\Auth\Database\Administrator::class,
             ],
         ],
 
@@ -93,7 +93,7 @@ return [
 
         'directory' => [
             'image' => 'images',
-            'file'  => 'files',
+            'file' => 'files',
         ],
     ],
 
@@ -122,11 +122,11 @@ return [
         'menu_model' => Encore\Admin\Auth\Database\Menu::class,
 
         // 多对多关联中间表
-        'operation_log_table'    => 'admin_operation_log',
+        'operation_log_table' => 'admin_operation_log',
         'user_permissions_table' => 'admin_user_permissions',
-        'role_users_table'       => 'admin_role_users',
+        'role_users_table' => 'admin_role_users',
         'role_permissions_table' => 'admin_role_permissions',
-        'role_menu_table'        => 'admin_role_menu',
+        'role_menu_table' => 'admin_role_menu',
     ],
 
     /*
@@ -156,7 +156,7 @@ return [
     /*
      * 菜单是否检查权限
     */
-    'check_menu_roles'       => true,
+    'check_menu_roles' => true,
 
     /*
     * 管理员默认头像
@@ -234,6 +234,42 @@ return [
      * 扩展设置.
      */
     'extensions' => [
-
-    ],
+        'quill' => [
+            // If the value is set to false, this extension will be disabled
+            'enable' => true,
+            'config' => [
+                'modules' => [
+                    'syntax' => true,
+                    'toolbar' =>
+                        [
+                            ['size' => []],
+                            ['header' => []],
+                            'bold',
+                            'italic',
+                            'underline',
+                            'strike',
+                            ['script' => 'super'],
+                            ['script' => 'sub'],
+                            ['color' => []],
+                            ['background' => []],
+                            'blockquote',
+                            'code-block',
+                            ['list' => 'ordered'],
+                            ['list' => 'bullet'],
+                            ['indent' => '-1'],
+                            ['indent' => '+1'],
+                            'direction',
+                            ['align' => []],
+                            'link',
+                            'image',
+                            'video',
+                            'formula',
+                            'clean'
+                        ],
+                ],
+                'theme' => 'snow',
+                'height' => '200px',
+            ]
+        ]
+    ]
 ];
