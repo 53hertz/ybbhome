@@ -10052,6 +10052,10 @@ body {
 .products-index-page .pagination {
   margin-right: 5px;
 }
+.products-index-page .search-form {
+  padding: 0 5px 10px;
+  margin-bottom: 10px;
+}
 .products-index-page .products-list {
   padding: 0 15px;
 }

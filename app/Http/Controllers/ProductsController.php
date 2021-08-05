@@ -9,7 +9,25 @@ class ProductsController extends Controller
 {
     public function index()
     {
-        $products  = Product::query()->where('on_sale', true)->paginate(16);
-        return  view('products.index', compact('products'));
+        $builder  = Product::onSale();
+
+        if ($search = request()->input('search', '')) {
+            $like = '%'.$search.'%';
+            $builder->search($like);
+        }
+
+        if ($order = request()->input('order', '')) {
+            $builder->order($order);
+        }
+
+        $products = $builder->paginate(16);
+
+        return view('products.index', [
+            'products' => $products,
+            'filters'  => [
+                'search' => $search,
+                'order'  => $order,
+            ],
+        ]);
     }
 }
