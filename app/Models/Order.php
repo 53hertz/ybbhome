@@ -108,47 +108,4 @@ class Order extends Model
         return false;
     }
 
-    public function store($user, $items, $address)
-    {
-        // 开启一个数据库事务
-        \DB::transaction(function () use ($user, $items, $address) {
-            // 更新此地址的最后使用时间
-            $address->update(['last_used_at' => Carbon::now()]);
-
-            // 订单关联到当前用户
-            $this->user()->associate($user);
-            // 写入数据库
-            $this->save();
-
-            $totalAmount = 0;
-            // 遍历用户提交的 SKU
-            foreach ($items as $data) {
-                $sku  = ProductSku::find($data['sku_id']);
-                // 创建一个 OrderItem 并直接与当前订单关联
-                $item = $this->items()->make([
-                    'amount' => $data['amount'],
-                    'price' => $sku->price,
-                ]);
-                $item->product()->associate($sku->product_id);
-                $item->productSku()->associate($sku);
-                $item->save();
-                $totalAmount += $sku->price * $data['amount'];
-                if ($sku->decreaseStock($data['amount']) <= 0) {
-                    throw new InvalidRequestException('该商品库存不足');
-                }
-            }
-
-            // 更新订单总金额
-            $this->update(['total_amount' => $totalAmount]);
-
-            // 将下单的商品从购物车中移除
-            $skuIds = collect($items)->pluck('sku_id');
-            $user->cartItems()->whereIn('product_sku_id', $skuIds)->delete();
-
-        });
-
-        return $this;
-    }
-
-
 }
