@@ -25,17 +25,19 @@ class OrdersController extends Controller
 
     public function store()
     {
-        $user  = request()->user();
+        $user = request()->user();
         $addressId = request()->input('address_id');
         $remark = request()->input('remark');
         $items = request()->input('items');
 
         $address = UserAddress::find($addressId);
         $addressInfo = [
-            'address' => $address->full_address,
-            'zip' => $address->zip,
-            'contact_name' => $address->contact_name,
-            'contact_phone' => $address->contact_phone,
+            'address' => [
+                'address' => $address->full_address,
+                'zip' => $address->zip,
+                'contact_name' => $address->contact_name,
+                'contact_phone' => $address->contact_phone,
+            ],
             'remark' => $remark,
             'total_amount' => 0,
         ];
@@ -45,6 +47,14 @@ class OrdersController extends Controller
         $this->dispatch(new CloseOrder($order, config('app.order_ttl')));
 
         return $order;
+    }
+
+    public function show(Order $order)
+    {
+        $this->authorize('own', $order);
+        $order = $order->load(['items.productSku', 'items.product']);
+
+        return view('orders.show', compact('order'));
     }
 
 }
