@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Exceptions\InvalidRequestException;
+use App\Jobs\CloseOrder;
 use App\Models\Order;
 use App\Models\UserAddress;
 use Illuminate\Http\Request;
@@ -27,7 +28,11 @@ class OrdersController extends Controller
             'total_amount' => 0,
         ];
 
-        return (new Order($addressInfo))->store($user, $items, $address);
+        $order = (new Order($addressInfo))->store($user, $items, $address);
+
+        $this->dispatch(new CloseOrder($order, config('app.order_ttl')));
+
+        return $order;
     }
-    
+
 }
