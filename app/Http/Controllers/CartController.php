@@ -13,14 +13,15 @@ class CartController extends Controller
     public function index()
     {
         $cartItems = request()->user()->cartItems()->with(['productSku.product'])->get();
+        $addresses = request()->user()->userAddresses()->orderBy('last_used_at', 'desc')->get();
 
-        return view('cart.index', compact('cartItems'));
+        return view('cart.index', compact('cartItems', 'addresses'));
     }
 
     public function add(AddCartRequest $request)
     {
-        $user   = $request->user();
-        $skuId  = $request->input('sku_id');
+        $user = $request->user();
+        $skuId = $request->input('sku_id');
         $amount = $request->input('amount');
 
         // 从数据库中查询该商品是否已经在购物车中
