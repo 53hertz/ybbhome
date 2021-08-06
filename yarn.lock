@@ -885,6 +885,11 @@
   resolved "https://registry.nlark.com/@discoveryjs/json-ext/download/@discoveryjs/json-ext-0.5.3.tgz?cache=0&sync_timestamp=1620944635839&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40discoveryjs%2Fjson-ext%2Fdownload%2F%40discoveryjs%2Fjson-ext-0.5.3.tgz#90420f9f9c6d3987f176a19a7d8e764271a2f55d"
   integrity sha1-kEIPn5xtOYfxdqGafY52QnGi9V0=
 
+"@fortawesome/fontawesome-free@^5.15.4":
+  version "5.15.4"
+  resolved "https://registry.nlark.com/@fortawesome/fontawesome-free/download/@fortawesome/fontawesome-free-5.15.4.tgz#ecda5712b61ac852c760d8b3c79c96adca5554e5"
+  integrity sha1-7NpXErYayFLHYNizx5yWrcpVVOU=
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.nlark.com/@nodelib/fs.scandir/download/@nodelib/fs.scandir-2.1.5.tgz?cache=0&sync_timestamp=1622792718463&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40nodelib%2Ffs.scandir%2Fdownload%2F%40nodelib%2Ffs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"

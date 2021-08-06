@@ -22,6 +22,9 @@
           <li class="nav-item"><a class="nav-link" href="{{ route('login') }}">登录</a></li>
           <li class="nav-item"><a class="nav-link" href="{{ route('register') }}">注册</a></li>
         @else
+          <li class="nav-item">
+            <a class="nav-link mt-1" href="{{ route('cart.index') }}"><i class="fa fa-shopping-cart"></i></a>
+          </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                aria-haspopup="true" aria-expanded="false">
