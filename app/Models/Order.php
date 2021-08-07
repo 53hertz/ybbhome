@@ -4,12 +4,13 @@ namespace App\Models;
 
 use App\Exceptions\InvalidRequestException;
 use Carbon\Carbon;
+use Encore\Admin\Traits\DefaultDatetimeFormat;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Order extends Model
 {
-    use HasFactory;
+    use HasFactory, DefaultDatetimeFormat;
 
     const REFUND_STATUS_PENDING = 'pending';
     const REFUND_STATUS_APPLIED = 'applied';
