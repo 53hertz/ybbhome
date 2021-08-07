@@ -14917,6 +14917,10 @@ body {
 .orders-show-page {
   font-size: 12px;
 }
+.orders-show-page .payment-buttons {
+  margin-top: 10px;
+  padding-right: 10px;
+}
 .orders-show-page .vertical-middle {
   vertical-align: middle;
 }
