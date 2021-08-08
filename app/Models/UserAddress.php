@@ -22,6 +22,8 @@ class UserAddress extends Model
 
     protected $dates = ['last_used_at'];
 
+    protected $appends = ['full_address'];
+
     public function user()
     {
         return $this->belongsTo(User::class);
