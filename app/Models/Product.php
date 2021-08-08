@@ -10,9 +10,17 @@ class Product extends Model
 {
     use HasFactory;
 
+    const TYPE_NORMAL = 'normal';
+    const TYPE_CROWDFUNDING = 'crowdfunding';
+
+    public static $typeMap = [
+        self::TYPE_NORMAL  => '普通商品',
+        self::TYPE_CROWDFUNDING => '众筹商品',
+    ];
+
     protected $fillable = [
         'title', 'description', 'image', 'on_sale',
-        'rating', 'sold_count', 'review_count', 'price'
+        'rating', 'sold_count', 'review_count', 'price','type'
     ];
 
     protected $casts = [
@@ -28,6 +36,11 @@ class Product extends Model
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function crowdfunding()
+    {
+        return $this->hasOne(CrowdfundingProduct::class);
     }
 
     public function getImageUrlAttribute()
