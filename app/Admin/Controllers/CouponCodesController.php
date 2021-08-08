@@ -11,8 +11,6 @@ use Encore\Admin\Traits\DefaultDatetimeFormat;
 
 class CouponCodesController extends AdminController
 {
-    use DefaultDatetimeFormat;
-
     /**
      * Title for current resource.
      *
@@ -55,7 +53,13 @@ class CouponCodesController extends AdminController
 
         $form->display('id', 'ID');
         $form->text('name', '名称')->rules('required');
-        $form->text('code', '优惠码')->rules('nullable|unique:coupon_codes');
+        $form->text('code', '优惠码')->rules(function ($form){
+            if ($id = $form->model()->id) {
+                return 'nullable|unique:coupon_codes,code,'.$id.',id';
+            } else {
+                return 'nullable|unique:coupon_codes';
+            }
+        });
         $form->radio('type', '类型')->options(CouponCode::$typeMap)->rules('required')->default(CouponCode::TYPE_FIXED);
         $form->text('value', '折扣')->rules(function ($form) {
             if (request()->input('type') === CouponCode::TYPE_PERCENT) {
