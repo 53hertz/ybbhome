@@ -2,12 +2,13 @@
 
 namespace App\Models;
 
+use Encore\Admin\Traits\DefaultDatetimeFormat;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CrowdfundingProduct extends Model
 {
-    use HasFactory;
+    use HasFactory, DefaultDatetimeFormat;
 
     // 定义众筹的 3 种状态
     const STATUS_FUNDING = 'funding';
