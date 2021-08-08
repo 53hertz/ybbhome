@@ -46,7 +46,7 @@ class Product extends Model
 
     public function scopeSearch($query, $like)
     {
-        $query->where('title', 'like', $like)
+        return $query->where('title', 'like', $like)
             ->orWhere('description', 'like', $like)
             ->orWhereHas('skus', function ($query) use ($like) {
                 $query->where('title', 'like', $like)
@@ -64,5 +64,7 @@ class Product extends Model
                 $query->orderBy($m[1], $m[2]);
             }
         }
+
+        return $query;
     }
 }
