@@ -51,6 +51,8 @@ Route::group(['middleware' => ['auth', 'verified']], function () {
 
     Route::post('crowdfunding_orders', 'OrdersController@crowdfunding')->name('crowdfunding_orders.store');
 
+    Route::get('installments', 'InstallmentsController@index')->name('installments.index');
+
 
 });
 
