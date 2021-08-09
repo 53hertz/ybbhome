@@ -14,5 +14,6 @@ class VerifyCsrfToken extends Middleware
     protected $except = [
         'http://ybbhome.test/*',
         'payment/alipay/notify',
+        'installments/alipay/notify',
     ];
 }
