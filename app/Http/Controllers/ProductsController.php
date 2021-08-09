@@ -125,8 +125,7 @@ class ProductsController extends Controller
                         // 指明 nested 字段
                         'path'  => 'properties',
                         'query' => [
-                            ['term' => ['properties.name' => $name]],
-                            ['term' => ['properties.value' => $value]],
+                            ['term' => ['properties.search_value' => $filter]],
                         ],
                     ],
                 ];
