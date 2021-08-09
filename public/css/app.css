@@ -14661,6 +14661,21 @@ body {
 .products-index-page .search-form, .products-favorites-page .search-form {
   padding: 0 5px 10px;
 }
+.products-index-page .search-form .filter, .products-favorites-page .search-form .filter {
+  border: 1px red solid;
+  font-size: 12px;
+  padding: 2px 0 2px 2px;
+}
+.products-index-page .search-form .filter .filter-value, .products-favorites-page .search-form .filter .filter-value {
+  color: red;
+}
+.products-index-page .search-form .filter .remove-filter, .products-favorites-page .search-form .filter .remove-filter {
+  text-decoration: none;
+  color: white;
+  font-weight: bold;
+  background: red;
+  padding: 2px;
+}
 .products-index-page .search-form .category-breadcrumb, .products-favorites-page .search-form .category-breadcrumb {
   line-height: 28px;
 }
