@@ -16,10 +16,7 @@ class OrderFactory extends Factory
         // 随机取一个用户
         $user = User::query()->inRandomOrder()->first();
         // 随机取一个该用户的地址
-<<<<<<< HEAD
-=======
         $address = $user->userAddresses()->inRandomOrder()->first();
->>>>>>> 引入 Horizon
         // 10% 的概率把订单标记为退款
         $refund = random_int(0, 10) < 1;
         // 随机生成发货状态
