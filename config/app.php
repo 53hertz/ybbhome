@@ -234,6 +234,10 @@ return [
 
     'order_ttl' => 1800,
 
+    // 单位秒，秒杀订单的支付有效期通常要比普通订单要短
+    // 这里我们将其设为 10 分钟
+    'seckill_order_ttl' => 600,
+
     'ngrok_url' => env('NGROK_URL'),
 
     'installment_fee_rate' => [
